@@ -142,4 +142,4 @@ Enligt kursmålen så ska du:
 ---
 
 **Lycka till!**  
-Den här uppgiften är perfekt för att träna på hur man använder objektorienterad design i praktiken, hur man skiljer på klassbibliotek och API, och hur man skapar enkla algoritmer för filtrering/sök/beräkning. Var inte rädd att fråga om du kör fast eller vill bolla designfrågor!
+Den här uppgiften är perfekt för att träna på hur man använder objektorienterad design i praktiken, hur man skiljer på klassbibliotek och API, och hur man skapar enkla algoritmer för filtrering/sök/beräkning. Var inte rädd att fråga om du kör fast eller vill bolla designfrågor!# PLANT
