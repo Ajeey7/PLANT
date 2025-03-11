@@ -1,13 +1,27 @@
-public abstract class Plant : IEntity
+using OperationOOP.Core.Interfaces;
+using System;
+
+namespace OperationOOP.Core.Models
 {
-    public int Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public DateTime LastWatered { get; set; }
-
-    public abstract string PlantType { get; }
-
-    public void Water()
+    public abstract class Plant : IEntity
     {
-        LastWatered = DateTime.Now;
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Species { get; set; }
+        public int WateringIntervalDays { get; set; }
+        public DateTime LastWatered { get; set; }
+
+        protected Plant(string name, string species, int wateringIntervalDays)
+        {
+            Name = name;
+            Species = species;
+            WateringIntervalDays = wateringIntervalDays;
+            LastWatered = DateTime.Now;
+        }
+
+        public DateTime GetNextWateringDate()
+        {
+            return LastWatered.AddDays(WateringIntervalDays);
+        }
     }
 }
