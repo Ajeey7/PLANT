@@ -1,22 +1,17 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace OperationOOP.Core.Models
 {
-    public class WateringSchedule
+    public class WateringSchedule : IEntity
     {
-        private readonly List<Plant> _plants;
+        public int Id { get; set; }
+        public int PlantId { get; set; }
+        public DateTime NextWateringDate { get; set; }
 
-        public WateringSchedule(List<Plant> plants)
+        public WateringSchedule(int plantId, DateTime nextWateringDate)
         {
-            _plants = plants;
-        }
-
-        public List<Plant> GetPlantsNeedingWatering()
-        {
-            DateTime today = DateTime.Today;
-            return _plants.Where(p => p.GetNextWateringDate() <= today).ToList();
+            PlantId = plantId;
+            NextWateringDate = nextWateringDate;
         }
     }
 }
