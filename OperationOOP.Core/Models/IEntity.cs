@@ -1,8 +1,7 @@
-namespace OperationOOP.Core.Interfaces
+namespace OperationOOP.Core.Models
 {
     public interface IEntity
     {
         int Id { get; set; }
-        string Name { get; set; }
     }
 }
