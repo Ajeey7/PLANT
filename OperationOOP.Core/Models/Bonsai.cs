@@ -1,29 +1,35 @@
-namespace OperationOOP.Core.Models;
-public class Bonsai
+namespace OperationOOP.Core.Models
 {
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string Species { get; set; }
-    public int AgeYears { get; set; }
-    public DateTime LastWatered { get; set; }
-    public DateTime LastPruned { get; set; }
-    public BonsaiStyle Style { get; set; }
-    public CareLevel CareLevel { get; set; }
-}
+    public class Bonsai : Plant
+    {
+        
+        public DateTime LastPruned { get; set; }
+        public BonsaiStyle Style { get; set; }
 
-public enum BonsaiStyle
-{
-    Chokkan,    // Formal Upright
-    Moyogi,     // Informal Upright
-    Shakan,     // Slanting
-    Kengai,     // Cascade
-    HanKengai   // Semi-cascade
-}
+        
 
-public enum CareLevel
-{
-    Beginner,
-    Intermediate,
-    Advanced,
-    Master
-} 
+        public Bonsai(string name, string species, int ageYears, CareLevel careLevel, BonsaiStyle style)
+            : base(name, species, ageYears, careLevel)
+        {
+            Style = style;
+            LastPruned = DateTime.Now;
+        }
+
+        public override void WaterPlant()
+        {
+            LastWatered = DateTime.Now;
+        }
+        
+
+    }
+
+    public enum BonsaiStyle
+    {
+        Chokkan,    // Formal Upright
+        Moyogi,     // Informal Upright
+        Shakan,     // Slanting
+        Kengai,     // Cascade
+        HanKengai   // Semi-cascade
+    }
+    
+}
