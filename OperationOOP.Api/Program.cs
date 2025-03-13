@@ -1,7 +1,6 @@
-
-using Microsoft.Extensions.Options;
 using OperationOOP.Api.Endpoints;
 using OperationOOP.Core.Data;
+using Microsoft.Extensions.Options;
 
 namespace OperationOOP.Api
 {
@@ -11,10 +10,10 @@ namespace OperationOOP.Api
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            // Add services to the container
             builder.Services.AddAuthorization();
 
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            // Lägg till Swagger
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(options =>
             {
@@ -22,11 +21,12 @@ namespace OperationOOP.Api
                 options.InferSecuritySchemes();
             });
 
+            // Lägg till en databas-instans
             builder.Services.AddSingleton<IDatabase, Database>();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // Aktivera Swagger om vi är i utvecklingsläge
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -34,10 +34,11 @@ namespace OperationOOP.Api
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
 
-            app.MapEndpoints<Program>();
+            // Registrera endpoints från PlantEndpoints
+            PlantEndpoints.MapGetEndpoint(app); // Registrera GET endpoint
+            PlantEndpoints.MapPostEndpoint(app); // Registrera POST endpoint
 
             app.Run();
         }
